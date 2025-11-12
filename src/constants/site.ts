@@ -23,9 +23,16 @@ function getSiteUrl(): string {
       return 'http://localhost:3000';
     }
 
-    throw new Error(
-      '❌ VITE_SITE_URL environment variable is not set. Please set it to your production domain.'
-    );
+    // In production, use window.location.origin as fallback
+    if (typeof window !== 'undefined') {
+      console.warn(
+        '⚠️ VITE_SITE_URL not set. Using current domain as fallback.'
+      );
+      return window.location.origin;
+    }
+
+    // Last resort fallback
+    return 'https://thunder-cafe.vercel.app';
   }
 
   try {
@@ -33,9 +40,11 @@ function getSiteUrl(): string {
     new URL(url);
     return url;
   } catch {
-    throw new Error(
-      `❌ VITE_SITE_URL ("${url}") is not a valid URL. Please check your .env file.`
-    );
+    // If invalid, fallback to window.location.origin in browser
+    if (typeof window !== 'undefined') {
+      return window.location.origin;
+    }
+    return 'https://thunder-cafe.vercel.app';
   }
 }
 
