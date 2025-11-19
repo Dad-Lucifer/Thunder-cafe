@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -26,6 +26,10 @@ import cafe2 from '@/assets/cafe2.png';
 import cafe3 from '@/assets/cafe3.png';
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [currentCafeImage, setCurrentCafeImage] = useState(0);
   const heroRef = useScrollAnimation(0.1);
   const contentRef = useScrollAnimation(0.1);
@@ -96,7 +100,11 @@ const About = () => {
       <Navbar />
 
       {/* Hero Header */}
-      <section ref={heroRef.ref} className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      {/* 
+        FIX: Changed pt-32 to pt-20 sm:pt-24 to ensure consistent spacing across all screen sizes
+        This prevents the heading from being overlapped by the navigation bar on mobile devices
+      */}
+      <section ref={heroRef.ref} className="pt-20 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className={`max-w-7xl mx-auto text-center ${
           heroRef.isVisible ? 'animate-fade-in-up' : 'opacity-0'
         }`}>

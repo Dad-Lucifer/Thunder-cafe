@@ -80,6 +80,10 @@ interface FormErrors {
 }
 
 const Booking = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();

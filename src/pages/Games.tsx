@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -34,6 +34,10 @@ import { getGameDescription } from '@/lib/formatters';
 import type { PlatformFilter, Game } from '@/types';
 
 const Games = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [platformFilter, setPlatformFilter] = useState<PlatformFilter>('all');
   const headerRef = useScrollAnimation(0.1);
   const filtersRef = useScrollAnimation(0.1);
