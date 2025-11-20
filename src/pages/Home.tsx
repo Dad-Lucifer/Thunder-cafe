@@ -121,7 +121,7 @@ const Home = () => {
           {/* Left Column - Text - Mobile Optimized */}
           <div className={`space-y-6 text-center lg:text-left ${heroRef.isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-white leading-none animate-fade-in-down">
-              Sikko
+              Thunder
               <br />
               Gaming
               <br />
